@@ -29,7 +29,7 @@ extract_keywords -i path/to/txt_folder -o path/to/output_folder -n 3500
 Use the [amilib](https://pypi.org/project/amilib/1.0.0a9/) library to fetch structured information for each extracted phrase from Wikipedia and compile them into an encyclopedia format.
 
 ```
-amilib DICT --words /content/part2_fiilteredCAbook_words.txt --description wikipedia --dict CA_all.html --figures --operation create
+amilib DICT --words CAbook_words.txt --description wikipedia --dict CA_encyclopedia.html --figures --operation create
 
 ```
 
