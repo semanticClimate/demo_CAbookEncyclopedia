@@ -1,0 +1,47 @@
+{
+    "@context": [
+        "https://schema.org",
+        "https://www.w3.org/ns/pub-context"
+    ],
+    "conformsTo": "https://www.w3.org/TR/pub-manifest/",
+    "type": "Book",
+    "name": "My Book",
+    "author": {
+        "type": "Person",
+        "name": "semanticClimate"
+    },
+    "inLanguage": "en",
+    "datePublished": "2025-04-01",
+    "readingOrder": [
+        {
+            "type": "LinkedResource",
+            "url": "index.html",
+            "name": "all_book"
+        }
+    ],
+    "resources": [
+        {
+            "type": [
+                "LinkedResource"
+            ],
+            "url": "assets/css/appaloosa.css"
+        },
+        {
+            "type": [
+                "LinkedResource"
+            ],
+            "url": "assets/css/book.css"
+        },
+        {
+            "type": "LinkedResource",
+            "rel": "cover",
+            "url": "assets/images/cover.jpg",
+            "encodingFormat": "image/jpeg"
+        },
+        {
+            "type": "LinkedResource",
+            "url": "css/media/Inter-Regular.ttf",
+            "encodingFormat": "application/vnd.ms-opentype"
+        }
+    ]
+}
