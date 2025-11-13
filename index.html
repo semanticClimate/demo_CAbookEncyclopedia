@@ -2060,4 +2060,15 @@ function toggleList(id) {
 <a href='CAbook_encyclopedia.html#zombie'>zombie</a>
 <a href='CAbook_encyclopedia.html#zombies'>zombies</a>
 </div></div>
-</div></body></html>
+</div>
+<script>
+function toggleList(id) {
+  document.querySelectorAll('.term-list').forEach(el => {
+    if (el.id !== id) el.style.display = 'none';
+  });
+  const el = document.getElementById(id);
+  el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+</script>
+</body>
+</html>
