@@ -4,69 +4,158 @@
 <meta charset="UTF-8">
 <title>CAbook Encyclopedia — Cover</title>
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #e8f0ff, #ffffff);
-    font-family: "Segoe UI", Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-
-  .cover-container {
-    text-align: center;
-    padding: 60px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    max-width: 700px;
-  }
-
-  h1 {
-    font-size: 2.5em;
-    color: #004aad;
-    margin-bottom: 10px;
-  }
-
-  h2 {
-    font-size: 1.4em;
-    color: #333;
-    font-weight: normal;
-    margin-bottom: 30px;
-  }
-
-  .byline {
-    font-size: 1.1em;
-    color: #666;
-    margin-top: 40px;
-  }
-
-  .button {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 12px 25px;
-    font-size: 1em;
-    color: #fff;
-    background-color: #004aad;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.2s ease;
-  }
-
-  .button:hover {
-    background-color: #003780;
-  }
-</style>
+        a.fn {
+            -adapt-template: url(data:application/xml,%3Chtml%20xmlns=%22http://www.w3.org/1999/xhtml%22%20xmlns:s=%22http://www.pyroxy.com/ns/shadow%22%3E%3Chead%3E%3Cstyle%3E.footnote-content%7Bfloat:footnote%7D%3C/style%3E%3C/head%3E%3Cbody%3E%3Cs:template%20id=%22footnote%22%3E%3Cs:content/%3E%3Cs:include%20class=%22footnote-content%22/%3E%3C/s:template%3E%3C/body%3E%3C/html%3E#footnote);
+            text-decoration: none;
+            color: inherit;
+            vertical-align: baseline;
+            font-size: 70%;
+            position: relative;
+            top: -0.3em;
+        }
+        body {
+            background-color: white;
+        }
+        section[role=doc-footnote] .footnote-counter:after {
+            content: ". ";
+        }
+        section.fnlist {
+            display: none;
+        }
+        section:footnote-content {
+            display: block;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+        }
+        .table-of-contents a {
+            display: inline-flex;
+            width: 100%;
+            text-decoration: none;
+            color: currentColor;
+            break-inside: avoid;
+            align-items: baseline;
+        }
+        .table-of-contents a::before {
+            margin-left: 1px;
+            margin-right: 1px;
+            border-bottom: solid 1px lightgray;
+            content: "";
+            order: 1;
+            flex: auto;
+        }
+        .table-of-contents a::after {
+            text-align: right;
+            content: target-counter(attr(href, url), page);
+            align-self: flex-end;
+            flex: none;
+            order: 2;
+        }
+        @page {
+            size: A4;
+            @top-center {
+            content: env(doc-title);
+            }
+            @bottom-center {
+            content: counter(page);
+            }
+        }
+        @page :first {
+            @bottom-center {
+            content: normal;
+            }
+            @top-center {
+            content: normal;
+            }
+        }
+        figure img {
+            max-width: 100%;
+        }
+        .article-title {
+            page-break-before: right;
+        }
+        h1.part {
+            page-break-before: right;
+        }
+        .copyrightpage {
+            page-break-before: left;
+        }
+        .tocpage {
+            page-break-before: right;
+        }
+        .booktitle {
+            text-align: center;
+        }
+        div[role="ami_entry"] {
+            border: 1px solid #636060;        /* thin gray border */
+            padding: 12px;                 /* space inside the box */
+            margin: 20px 0;                /* space between boxes */
+            border-radius: 6px;            /* optional: slightly rounded corners */
+            background-color: #fefefe;     /* optional: soft background */
+        }       
+    </style>
+<link href="assets/css/appaloosa.css" rel="stylesheet" type="text/css"/>
+<base href="https://en.wikipedia.org/wiki/"/>
 </head>
-<body>
-  <div class="cover-container">
-    <h1>CAbook Encyclopedia</h1>
-    <h2>Climate and Environment Knowledge Encyclopedia</h2>
-    <p class="byline">Created by <strong>semanticClimate</strong></p>
-
-    <a href="index.html" class="button">Enter Encyclopedia →</a>
-  </div>
+<body class="user-contents">
+<div class="titlepage frontmatter">
+<h1 class="booktitle">CA Book</h1>
+<h2 class="booksubtitle">semantic Encyclopedia</h2>
+<h3 class="bookauthor">#semanticClimate</h3>
+<h4 class="bookversion">Version Alpha 1.0</h4>
+</div>
+<div class="copyrightpage frontmatter">
+<p>CAbook: semantic Encyclopedia</p>
+<p>Version: Alpha 1.0 (work in progress)</p>
+<p>Last updated: 2025-11-07</p>
+<p>GitHub source: <a href="https://github.com/semanticClimate/demo_CAbookEncyclopedia">github.com/semanticClimate/demo_CAbookEncyclopedia</a></p>
+<h3>#semanticClimate: Our Approach</h3>
+<p>Making climate knowledge semantic and accessible</p>
+<p>#semanticClimate: https://semanticclimate.github.io/p/en/</p>
+<h4>Objectives</h4>
+<p>Our work at semanticClimate is mainly around the tool set for the content retrieval, creating what we call a corpus or mini corpus of IPCC reports and then some amplification of that.</p>
+<h4>#semanticClimate: tools</h4>
+<p>Here are three programs called:</p>
+<p>pygetpapers: written by Ayush Garg, Tool reads the scientific literature automatically.</p>
+<p>docanalysis: developed by Shweata N Hegde, The tool analyzes the documents</p>
+<p>amilib: written by Peter Murray-Rust, amilib deals with a lot of the integrase and conversion and so on.</p>
+</div>
+<div class="frontmatter">
+<h3>Instructions for use</h3>
+<p>All images are copied from Wikimedia with full provenance and attribution. Click on the image to visit Wikimedia</p>
+<p>To insert an image from Wikimedia:
+				<ul>
+<li>find the image in a Wikipedia page or Wikimedia Commons</li>
+<li>click on the image. This will reveal a page with "<strong>More details</strong>". Click this</li>
+<li>Click on "Use this file" at the top. </li>
+<li>Find "Embed this file" and copy everything in the box </li>
+<li>Paste the content into the glossary file. The image will appear when the file is displayed with an Internet connection.</li>
+</ul>
+<i>At present paste this under the <strong><em>"semanticClimate"</em></strong> header. We are devloping a template to help organize where to put annotations</i>
+</p>
+<p>to add a link to Wikipedia. Find the page, copy the URL and then paste in as 
+				<code>&lt;p&gt;&lt;a href="#your url"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;</code>
+</p>
+<p>To add language equivalents use the style:
+				<code>
+<br/>				&lt;div&gt;
+				<br/>	&lt;p&gt;Translations&lt;/p&gt;
+				<br/>&lt;ul&gt;
+				<br/>&lt;li lang="de"&gt;DE: ablation&lt;/li&gt;
+				<br/>&lt;li lang="hi"&gt;HI: पृथक करना&lt;/li&gt;
+				<br/>&lt;/ul&gt;
+				<br/>&lt;/div&gt;
+			</code>
+<div class="gloss-translate"> <p>Translations</p> <ul> <li lang="de">DE: ablation</li> <li lang="hi">HI: पृथक करना</li></ul></div>
+</p>
+</div>
+<div class="titlepage frontmatter">
+<h1 class="booktitle" style="color: rgb(9, 91, 146);">
+    CA Book: semantic Encyclopedia
+  </h1>
+</div>
+<div>
+<a href="index.html" class="button">Enter Encyclopedia →</a>
+</div>
 </body>
 </html>
