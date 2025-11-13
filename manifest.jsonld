@@ -17,6 +17,11 @@
             "type": "LinkedResource",
             "url": "index.html",
             "name": "all_book"
+        },
+        {
+            "type": "LinkedResource",
+            "url": "CAbook_encyclopedia.html",
+            "name": "CAbook Encyclopedia"
         }
     ],
     "resources": [
