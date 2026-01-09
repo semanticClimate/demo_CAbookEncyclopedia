@@ -1,5 +1,7 @@
 # demo_CAbookEncyclopedia
 
+## Climate Academy Student Book (Matthew Pye: Founder, Teacher, Author, Speaker) | [CLICK HERE](https://github.com/semanticClimate/demo_CAbookEncyclopedia/blob/main/ClimateAcademy_Book.pdf)
+
 ## [Link to the Encyclopedia](https://vivliostyle.org/viewer/#src=https://github.com/semanticClimate/demo_CAbookEncyclopedia/blob/main/manifest.jsonld)
 
 ### List of extracted keywords with their frequency of occurrence in the book | [CLICK HERE](https://github.com/semanticClimate/demo_CAbookEncyclopedia/blob/main/CAbook_keywords_with_frequency.csv)
