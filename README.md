@@ -2,7 +2,9 @@
 
 ## [Link to the Encyclopedia](https://vivliostyle.org/viewer/#src=https://github.com/semanticClimate/demo_CAbookEncyclopedia/blob/main/manifest.jsonld)
 
-### List of words/keyphrases extracted from the book | [Click Here](https://github.com/semanticClimate/encyclopedia/blob/renu/CAbook_encyclopedia/All3088_CAbook_words.txt)
+### List of extracted keywords with their frequency of occurrence in the book | [CLICK HERE](https://github.com/semanticClimate/demo_CAbookEncyclopedia/blob/main/CAbook_keywords_with_frequency.csv)
+
+### List of words/keyphrases extracted from the book (without frequency of words) | [Click Here](https://github.com/semanticClimate/encyclopedia/blob/renu/CAbook_encyclopedia/All3088_CAbook_words.txt)
 
 ## [Link to Knowledge Graph](https://github.com/semanticClimate/demo_CAbookEncyclopedia/blob/main/CA_encyclopedia_KG.html)
 
