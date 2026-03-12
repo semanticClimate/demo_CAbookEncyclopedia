@@ -27,10 +27,10 @@ ensure_packages(["beautifulsoup4", "networkx", "pyvis", "requests"])
 # ==========================
 # Step 1: Input/Output files
 # ==========================
-input_file = "/content/solvent_toxicity.html"
+input_file = "/content/encyclopedia_wg3_chap14.html"
 output_file = "/content/cleaned_sorted.html"
 #book_pdf = "/content/encyclopaedia_book.pdf"
-graph_html = "/content/encyclopedia_kg_visual.html"
+graph_html = "/content/wg3chap14_encyclopedia_kg2.html"
 graphml_path = os.path.join("output", "data", "graph", "encyclopedia_kg.graphml")
 
 # Only create the graph folder — skip PDF extraction folders
@@ -119,6 +119,7 @@ print(f"✅ Extracted {len(html_snippets)} snippets from HTML.")
 # Step 5: Build Knowledge Graph
 # ==========================
 print("🧠 Building knowledge graph...")
+
 with open(output_file, "r", encoding="utf-8") as f:
     soup = BeautifulSoup(f, "html.parser")
 
@@ -133,36 +134,53 @@ for div in entries2:
     term = (div.get("term") or "").strip()
     if not term:
         continue
+
     desc_tag = div.find("p") or div.find("div", {"class": "wpage_first_para"})
     desc = desc_tag.get_text(" ", strip=True) if desc_tag else ""
+
     img_tag = div.find("img")
     img = ""
     if img_tag:
         img = img_tag.get("src") or ""
         if img.startswith("//"):
             img = "https:" + img
-    links = []
+
+    links = set()
+
     for a in div.find_all("a", href=True):
         m = href_pattern.search(a["href"])
         if m:
-            links.append(re.sub("_", " ", m.group(1)).strip())
-    nodes[term] = {"desc": desc, "img": img, "links": links}
+            link = m.group(1)
+            link = link.split("#")[0]
+            link = link.replace("_", " ")
+            link = link.strip()
+            links.add(link)
+
+    nodes[term] = {"desc": desc, "img": img, "links": list(links)}
 
 G = nx.Graph()
+
+# Add nodes
 for term, data in nodes.items():
     G.add_node(term, description=data["desc"], image=data["img"])
+
+# Fast lookup
+lookup = {k.lower(): k for k in nodes}
+
+# Add edges
 for src, data in nodes.items():
     for tgt in data["links"]:
-        for k in nodes.keys():
-            if k.lower() == tgt.lower():
-                G.add_edge(src, k)
-                break
+        tgt_key = lookup.get(tgt.lower())
+        if tgt_key and tgt_key != src and not G.has_edge(src, tgt_key):
+            G.add_edge(src, tgt_key)
 
 isolated = list(nx.isolates(G))
 G.remove_nodes_from(isolated)
+
 print(f"🧩 Filtered: {len(G.nodes)} connected nodes, {len(G.edges)} edges")
 
 nx.write_graphml(G, graphml_path)
+
 print(f"✅ Saved graphml: {graphml_path}")
 
 # ==========================
